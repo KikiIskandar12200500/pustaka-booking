@@ -24,9 +24,9 @@ class ModelBuku extends CI_Model
         $this->db->update('buku', $data, $where);     
     } 
  
-    public function hapusBuku($where = null)     
+    public function hapusBuku($where = null)  
     {         
-        $this->db->delete('buku', $where);     
+        $this->db->delete('buku', $where);    
     } 
  
     public function total($field, $where)     
@@ -34,7 +34,7 @@ class ModelBuku extends CI_Model
         $this->db->select_sum($field);         
         if(!empty($where) && count($where) > 0){             
             $this->db->where($where);         
-        }
+        }         
         $this->db->from('buku');         
         return $this->db->get()->row($field);     
     }          
@@ -46,25 +46,26 @@ class ModelBuku extends CI_Model
  
     public function kategoriWhere($where)     
     {         
-        return $this->db->get_where('kategori', $where);    
+        return $this->db->get_where('kategori', $where);     
     } 
-     
+ 
     public function simpanKategori($data = null)     
     {         
         $this->db->insert('kategori', $data);     
     } 
-     
+ 
     public function hapusKategori($where = null)     
     {         
         $this->db->delete('kategori', $where);     
     } 
-     
+ 
     public function updateKategori($where = null, $data = null)     
     {         
         $this->db->update('kategori', $data, $where);     
-    }     
-    //join    
-    public function joinKategoriBuku($where)     
+    } 
+ 
+    //join     
+    public function joinKategoriBuku($where) 
     {         
         $this->db->select('buku.id_kategori,kategori.kategori');         
         $this->db->from('buku');         
@@ -72,4 +73,4 @@ class ModelBuku extends CI_Model
         $this->db->where($where);         
         return $this->db->get();     
     } 
-} 
+}
